@@ -1,0 +1,396 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://plansza1.gd" type="Script" id=1]
+[ext_resource path="res://art/BricksOld10_COL_VAR1_1K@2x.jpg" type="Texture" id=2]
+[ext_resource path="res://art/sciana3.jpeg" type="Texture" id=3]
+[ext_resource path="res://sciana.tres" type="Material" id=4]
+[ext_resource path="res://d-mucha-gawryl.tscn" type="PackedScene" id=5]
+[ext_resource path="res://skrzynia.tscn" type="PackedScene" id=6]
+[ext_resource path="res://drzwi.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Stefan.tscn" type="PackedScene" id=8]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 60, 100 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.388235, 0.239216, 0.239216, 1 )
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 20, 60, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 30, 0.1, 50 )
+
+[sub_resource type="SpatialMaterial" id=4]
+params_cull_mode = 1
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 2, 2, 1 )
+
+[sub_resource type="PlaneMesh" id=5]
+size = Vector2( 20, 10 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 10, 0.1, 5 )
+
+[sub_resource type="PlaneMesh" id=9]
+size = Vector2( 4, 10 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 2, 0.1, 5 )
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="BoxShape" id=8]
+
+[node name="plansza1" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="labirynt" type="Spatial" parent="."]
+
+[node name="gleba" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/gleba"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/gleba/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="sufit" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0903969, 9.0129, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sufit"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sufit/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="sciana1" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, -10 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana1/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana18" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -17.007, 5, 3.54407 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana18"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana18/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana19" type="MeshInstance" parent="labirynt"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.78912, 5, 3.54407 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana19"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana19/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216017, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="sciana20" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12.0092, 5, 10.9467 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana20"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana20/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana21" type="MeshInstance" parent="labirynt"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 9.82628, 5, 10.9467 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana21"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana21/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana22" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 18.3864, 5, 15.3607 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana22"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana22/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana23" type="MeshInstance" parent="labirynt"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 18.3864, 5, -17.0627 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana23"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana23/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana2" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -19.9943, 5, -24.7487 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana2/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana8" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -29.9508, 5, -23.113 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana8/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana15" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 29.9376, 5, -23.113 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana15"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana15/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana12" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -29.9508, 5, -40.1704 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana12"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana12/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana13" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 29.9376, 5, -40.1704 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana13"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana13/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana9" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -29.9508, 5, -3.20798 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana9/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana17" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 29.9376, 5, -3.20798 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana17"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana17/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana10" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -29.9508, 5, 16.5799 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana10"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana10/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana14" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 29.9376, 5, 16.5799 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana14"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana14/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana11" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -29.9508, 5, 36.4978 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana11"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana11/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana16" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 29.9376, 5, 36.4978 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana16"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana16/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana6" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -19.9943, 5, 29.8524 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana6"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana6/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana3" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00952911, 5, -26.983 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana3/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana24" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.68802, 5, -35.2483 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana24"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana24/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana25" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -18.1676, 5, -35.2483 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana25"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana25/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana5" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00952911, 5, 29.8524 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana5/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="mala_sciana" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -0.0494532, 0.998776, -4.36579e-08, 0, -4.37114e-08, -1, -0.998776, -0.0494532, 2.16167e-09, 16.7041, 5, 5.53909 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/mala_sciana"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/mala_sciana/StaticBody"]
+shape = SubResource( 10 )
+
+[node name="mala_sciana2" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( -0.0494532, 0.998776, -4.36579e-08, 0, -4.37114e-08, -1, -0.998776, -0.0494532, 2.16167e-09, 10.0129, 5, -26.7474 )
+mesh = SubResource( 9 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/mala_sciana2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/mala_sciana2/StaticBody"]
+shape = SubResource( 10 )
+
+[node name="sciana4" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 19.9623, 5, -24.7487 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana4/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="sciana7" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 19.9623, 5, 29.8524 )
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/sciana7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/sciana7/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="klocek" type="MeshInstance" parent="labirynt"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3964, 1.00044, -3.66799 )
+mesh = SubResource( 7 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="labirynt/klocek"]
+
+[node name="CollisionShape" type="CollisionShape" parent="labirynt/klocek/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0135725, 0 )
+shape = SubResource( 8 )
+
+[node name="klucz1" parent="labirynt" instance=ExtResource( 5 )]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 8.3039, 2.42894, 0 )
+
+[node name="klucz2" parent="labirynt" instance=ExtResource( 5 )]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, -25.4239, 2.42894, 25.0894 )
+
+[node name="klucz3" parent="labirynt" instance=ExtResource( 5 )]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0.722031, 2.42894, -31.801 )
+
+[node name="skrzynia" parent="labirynt" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5163, 1.00194, -2.85971 )
+
+[node name="drzwi" parent="labirynt" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19177, 1.64092, 3.57406 )
+
+[node name="drzwi3" parent="labirynt" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.6736, 1.64092, 8.94279 )
+
+[node name="Stefan" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33721, 0 )

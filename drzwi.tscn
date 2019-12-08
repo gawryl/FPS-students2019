@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://drzwi.gd" type="Script" id=1]
+[ext_resource path="res://sciana.tres" type="Material" id=2]
+[ext_resource path="res://sounds/15419__pagancow__dorm-door-opening.wav" type="AudioStream" id=3]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2, 3.5, 0.1 )
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 4, 7, 0.2 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2, 1, 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "owtwieraj"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ) ]
+}
+
+[node name="drzwi" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50811, 0 )
+script = ExtResource( 1 )
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="StaticBody" type="StaticBody" parent="Spatial"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05599, 0 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04159, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="Spatial"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Area"]
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/owtwieraj = SubResource( 4 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+[connection signal="body_entered" from="Spatial/Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Spatial/Area" to="." method="_on_Area_body_exited"]
