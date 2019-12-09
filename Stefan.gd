@@ -11,6 +11,10 @@ var kierunek_ruchu
 var predkosc = Vector3()
 const GRAWITACJA = -50
 const MAX_V = 20
+const SKOK_V = 20
+const BIEGANIE_V = 20
+var czy_biegnie = false
+var czy_skradanie = false
 
 func _ready():
 	#kamera = $pomocniczy/Camera
@@ -66,6 +70,19 @@ func odczytuj(delta):
 	# Basis vectors are already normalized.
 	kierunek_ruchu += -cam_xform.basis.z * ruch2d.y
 	kierunek_ruchu += cam_xform.basis.x * ruch2d.x
+	# na koniec, jak juz wszystko zrobione
+	# podskok
+	if is_on_floor():
+			if Input.is_action_just_pressed("podskocz"):
+					predkosc.y = SKOK_V
+	if Input.is_action_pressed("bieganie"):
+			czy_biegnie = true
+	else:
+			czy_biegnie = false
+	if Input.is_action_pressed("skradanie"):
+			czy_skradanie = true
+	else:
+			czy_skradanie = false
 
 
 
@@ -78,7 +95,9 @@ func ruszaj_sie(delta):
 	var _pom_v = predkosc
 	_pom_v.y = 0
 #
-	var cel = kierunek_ruchu * MAX_V
+	#var cel = kierunek_ruchu * MAX_V
+	#var cel = kierunek_ruchu * (MAX_V + int(czy_biegnie)*BIEGANIE_V)
+	var cel = kierunek_ruchu * (MAX_V + int(czy_biegnie)*BIEGANIE_V)/(4*int(czy_skradanie)+1)
 
 #	var accel
 #	if dir.dot(hvel) > 0:
