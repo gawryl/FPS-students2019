@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Stefan.gd" type="Script" id=1]
+[ext_resource path="res://art/pistol.png" type="Texture" id=2]
+[ext_resource path="res://art/aim.png" type="Texture" id=3]
+[ext_resource path="res://sounds/37236__shades__gun-pistol-one-shot.wav" type="AudioStream" id=4]
+[ext_resource path="res://sounds/107622__stintx__pistol-reload.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
@@ -8,6 +12,23 @@ height = 2.0
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.6, 0.1, 0.6 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "strzal"
+length = 0.6
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 0 ]
+}
 
 [node name="Stefan" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -26,3 +47,39 @@ shape = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="pomocniczy"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93586, 0 )
+
+[node name="RayCast" type="RayCast" parent="pomocniczy/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.93586, -3.55271e-15 )
+enabled = true
+cast_to = Vector3( 0, 0, -30 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/strzal = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 136.955, -256 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+texture = ExtResource( 3 )
+
+[node name="Audio_strzal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Audio_przeladuj" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )

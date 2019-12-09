@@ -22,6 +22,7 @@ func _ready():
 	#najpierw bez trybu MOUSE_MODE_CAPTURED
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	yield(get_tree(), "idle_frame")
 
 func _input(event):
 	#gdy jeszcze nie mamy MOUSE_MODE_CAPTURE
@@ -45,7 +46,21 @@ func _input(event):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)			
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			
+	if Input.is_action_just_pressed("strzal"):
+		if not $AnimationPlayer.is_playing():
+			$Audio_strzal.play()
+			$AnimationPlayer.play("strzal")
+			var kto = $pomocniczy/Camera/RayCast.get_collider()
+			if kto:
+				print("Strzal: ", kto.name)
+				#kto.queue_free()
+				if $pomocniczy/Camera/RayCast.is_colliding() and kto.has_method("zgon"):
+					kto.zgon()
+	if Input.is_action_just_pressed("przeladuj"):
+		if not $Audio_przeladuj.is_playing():
+			$Audio_przeladuj.play()
 			
 func _physics_process(delta):
 	odczytuj(delta)
